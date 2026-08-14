@@ -1,6 +1,7 @@
 # Data Dictionary
 
 ## Original dataset
+**Name:** superstore.csv
 
 |Column|Type|Description|
 |-|-|-|
