@@ -5,7 +5,7 @@
 
 |Column|Type|Description|
 |-|-|-|
-|customer_id| Text | Unique customer id|
+|customer_id| Text | Unique customer id (PRIMARY KEY)|
 |customer_name| Text | Customer name (First Last)|
 |city|Text |City of customer |
 |state|Text|State of customer|
