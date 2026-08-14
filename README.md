@@ -36,6 +36,16 @@ There are 2 additional tables, containing:
 - Reviews -> One row per review (rating)
 - Returns -> One row per returned order / product within returned order
 
+
+
+
+
+
+
+## Database Structure
+
+For a full breakdown of each table, along with the datatypes and brief explanation of each column in each table, see documents/
+
 ### Table relations
 
 The relations between each table in this database are as follows:
@@ -51,12 +61,6 @@ order_items.order_id
 products.product_id\
 &emsp;&darr;\
 order_items.product_id
-
-
-
-
-
-## Database Structure
 
 ## Analysis Approach
 
