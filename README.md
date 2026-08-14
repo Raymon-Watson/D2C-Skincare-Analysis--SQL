@@ -2,7 +2,7 @@
 
 ## Project Overview
 
-This project analyses transaction data from a global superstore in order to understand regional sales performance, customer purchasing habits, and product performance.
+This project analyses transaction data from a Direct-to-Consumer (D2C) skincare e-commerce business in order to understand regional sales performance, customer purchasing habits, and product performance.
 
 PostgreSQL was used to organise, explore, and analyse the data. The analysis focuses on identifying revenue trends, high-value customers, product performance, and customer purchasing patterns.
 
