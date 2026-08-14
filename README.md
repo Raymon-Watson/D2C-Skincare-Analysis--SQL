@@ -25,3 +25,19 @@
 ## How to Run the Project
 
 ## SQL Skills Demonstrated
+
+This project uses:
+
+- SELECT, WHERE and CASE
+- GROUP BY and HAVING
+- aggregate functions
+- date manipulation
+- INNER and LEFT JOIN
+- subqueries
+- Common Table Expressions (CTEs)
+- conditional aggregation
+- ROW_NUMBER
+- RANK
+- LAG and LEAD
+- windowed SUM and AVG
+- rolling calculations
