@@ -44,7 +44,7 @@ There are 2 additional tables, containing:
 
 ## Database Structure
 
-For a full breakdown of each table, along with the datatypes and brief explanation of each column in each table, see documents/
+For a full breakdown of each table, along with the datatypes and brief explanation of each column in each table, see: **docs/data_dictionary.md**.
 
 ### Table relations
 
