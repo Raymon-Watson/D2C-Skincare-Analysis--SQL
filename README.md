@@ -1,4 +1,4 @@
-# Global Superstore Sales and Customer Analysis
+# D2C Skincare E-Commerce Dataset Analysis
 
 ## Project Overview
 
@@ -20,17 +20,28 @@ Broad questions the analysis aims to answer:
 
 ## Dataset
 
-**Data source:**:  https://www.kaggle.com/datasets/fatihilhan/global-superstore-dataset
+**Data source:**:  https://www.kaggle.com/datasets/kaushalvyas16/d2c-skincare-e-commerce-analytics-dataset
 
-The original dataset consisted of one large table, containing all data. This is broken down into several related tables as follows:
+### Table grains
 
-- 'customers' - customer information and location
-- 'orders' - one record per customer order
-- 'products' - product information and prices
+The dataset consists of 6 total files, however for this analysis we will be focusing on only 4 with the possibility of extension to include the additional 2 tables.
 
-Potentially:
-- 'order_items' - products contained within each order
-This should be used if a single order contains multiple items.
+The table grains are as follows:
+- Customers -> One row per customer
+- Orders -> One row per order
+- Order_Items -> One row per order / product within order
+- Products -> One row per product
+
+There are 2 additional tables, containing:
+- Reviews -> One row per review (rating)
+- Returns -> One row per returned order / product within returned order
+
+### Table relations
+customers.customer_id
+    &darr
+    
+
+
 
 ## Database Structure
 
