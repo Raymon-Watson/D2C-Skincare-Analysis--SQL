@@ -37,6 +37,7 @@ CREATE TABLE superstore (
   segment TEXT,
   ship_date TIMESTAMP,
   ship_mode TEXT,
+  shipping_cost NUMERIC,
   state_name TEXT,
   sub_category TEXT,
   year_order INT,
@@ -44,3 +45,6 @@ CREATE TABLE superstore (
   weeknum INT
 );
 
+
+SELECT * FROM superstore
+LIMIT 10;
