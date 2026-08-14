@@ -37,9 +37,22 @@ There are 2 additional tables, containing:
 - Returns -> One row per returned order / product within returned order
 
 ### Table relations
-customers.customer_id
-    &darr
-    
+
+The relations between each table in this database are as follows:
+
+customers.customer_id\
+&emsp;&darr;\
+orders.customer_id
+
+orders.order_id\
+&emsp;&darr;\
+order_items.order_id
+
+products.product_id\
+&emsp;&darr;\
+order_items.product_id
+
+
 
 
 
