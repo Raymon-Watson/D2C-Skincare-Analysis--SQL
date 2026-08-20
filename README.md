@@ -102,13 +102,6 @@ stock_qty\
 launch_date\
 
 
-
-### Table grain
-- 'customers': one row per customer
-- 'orders': one row per order
-- 'order_items': one row per product within an order
-- 'products': one row per product
-
 ## Analysis Approach
 
 **Expand this section with additional details**
@@ -120,15 +113,9 @@ The analysis presented here was completed in five stages:
 4. Business-focused sales, customer, and product analysis
 5. Advanced analysis of trends and customer behaviour
 
-## Business Questions
-
 ## Key Findings
 
 ## Recommendations
-
-## Tools Used
-
-## Repository Structure
 
 ## How to Run the Project
 
