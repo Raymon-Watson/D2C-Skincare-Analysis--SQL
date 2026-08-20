@@ -50,19 +50,75 @@ For a full breakdown of each table, along with the datatypes and brief explanati
 
 The relations between each table in this database are as follows:
 
-customers.customer_id\
+customers\
+--------\
+customer_id [PK]\
+customer_name\
+city\
+customer_state\
+signup_date\
+&emsp;|\
+&emsp;| customer_id\
 &emsp;&darr;\
-orders.customer_id
+orders\
+--------\
+order_id [PK]\
+customer_id [FK]\
+order_date\
+order_status\
+payment_method\
+sales_channel\
+gross_amount\
+discount_amount\
+shipping_fee\
+final_amount\
+delivered_date\
+&emsp;|\
+&emsp;| order_id\
+&emsp;&darr;\
+order_items\
+--------\
+order_item_id [PK]\
+order_id [FK]\
+product_it [FK]\
+quantity\
+unit_price\
+discount_pct\
+item_total\
+&emsp;&uarr;\
+&emsp;| product_id\
+&emsp;|\
+products\
+--------\
+product_id [PK]\
+product_name\
+category\
+skin_type\
+key_ingredient\
+product_size\
+mrp\
+cost_price\
+stock_qty\
+launch_date\
 
-orders.order_id\
-&emsp;&darr;\
-order_items.order_id
 
-products.product_id\
-&emsp;&darr;\
-order_items.product_id
+
+### Table grain
+- 'customers': one row per customer
+- 'orders': one row per order
+- 'order_items': one row per product within an order
+- 'products': one row per product
 
 ## Analysis Approach
+
+**Expand this section with additional details**
+
+The analysis presented here was completed in five stages:
+1. Database setup
+2. Data quality assessment
+3. Exploratory analysis
+4. Business-focused sales, customer, and product analysis
+5. Advanced analysis of trends and customer behaviour
 
 ## Business Questions
 
@@ -75,6 +131,10 @@ order_items.product_id
 ## Repository Structure
 
 ## How to Run the Project
+
+1. Run 01_database_setup.sql
+2. Import data from .csv files into relevant tables
+3. Run 02_data_quality.sql
 
 ## SQL Skills Demonstrated
 
