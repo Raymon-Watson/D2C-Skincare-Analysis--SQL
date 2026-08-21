@@ -80,10 +80,42 @@ JOIN orders
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
+SELECT EXTRACT(MONTH FROM order_date) AS order_month,
+SUM(final_amount) AS monthly_revenue
+FROM orders
+GROUP BY order_month 
+ORDER BY order_month ASC;
+
+
+SELECT EXTRACT(MONTH FROM order_date) AS order_month,
+SUM(final_amount) AS monthly_revenue
+FROM orders
+GROUP BY order_month 
+ORDER BY monthly_revenue ASC;
+
+SELECT EXTRACT(YEAR FROM order_date) AS order_year,
+EXTRACT(MONTH FROM order_date) AS order_month,
+SUM(final_amount) AS monthly_revenue
+FROM orders
+GROUP BY order_year, order_month
+ORDER BY order_year, order_month ASC;
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
 -- 3. Num. orders by month
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+SELECT EXTRACT(MONTH FROM order_date) AS order_month,
+COUNT(final_amount) AS num_orders_by_month
+FROM orders
+GROUP BY order_month 
+ORDER BY order_month ASC;
+
+SELECT EXTRACT(YEAR FROM order_date) AS order_year,
+EXTRACT(MONTH FROM order_date) AS order_month,
+COUNT(final_amount) AS monthly_revenue
+FROM orders
+GROUP BY order_year, order_month
+ORDER BY order_year, order_month ASC;
 
 
  
