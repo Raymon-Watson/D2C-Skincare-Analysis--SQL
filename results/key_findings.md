@@ -41,6 +41,25 @@ Sales channels:
 **Note:** The date range for signups is 2023-01-1 -> 2024-11-30. In contrast, the date range for orders is 2024-01-01 -> 2025-12-31. Interesting that the first signup date is a whole year before the first order, and practically likewise for the last signup and order dates.
 
 ### Order Items
+Basic information:
+- Each row contains an order/product pairing
+- Min quantity = 1 / Max quantity = 3
+- Min total items per order = 1 / Max total items per order = 7 (AVG 2.06)
+- Min discount = 0% / Max discount = 25% (AVG 9.6%)
+
+**Note:** We found that the discounts are applied to individual items, not to overall orders.
 
 
 ## Products
+Basic information:
+- Number of products = 28
+- Number of categories = 9
+- Min mrp = $249 / Max mrp = $799 (AVG 491.86)
+- Min cost price = 92 / Max cost price = 372 (AVG 212.54)
+- Min stock = 110 / Max stock = 210.89
+
+By taking the difference between MRP and cost price, we can calculate the profit per item:
+- Min mrp-cost diff. = 157 / Max mrp-cost diff. = 441 (AVG 279.32)
+
+
+
