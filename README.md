@@ -133,30 +133,30 @@ Item-level revenue was calculated using quantity, product price, and discount, w
 
 
 ### Sales Performance
-- Total non-cancelled revenue
-- Average order value
-- Revenue peaked in
-- Revenue dipped in
-- Largest month-over-month increase
-
+- Total non-cancelled revenue was $1,122,034.65
+- Average order value prior to shipping and discount was $636.64
+- Average order value after applying the discount was $575.59
+- Revenue peaked in the months:
+  - 2024 August, October, November
+  - 2025 January, July, October
+- Negative revenue growth was experienced in the months:
+  - 2024 Feb, Apr, May, Jul, Sep, Nov, Dec
+  - 2025 Feb, Apr, May, Jun, Aug, Sep, Nov
 
 ### Customer Behaviour
-- Top 10 customers generated % of the total revenue
-- % of customers placed more than one order
-- Highest-spending customer generated % in revenue
+- Top 10 customers generated 3% of the total revenue
+- 20% of customers only placed a single order
+- Only 19 customers placed more than 5 orders
 
 ### Product Performance
-- generated most revenue
-- highest revenue product category
+- Alpha Arbutin 2% Serum generated most revenue, accounting for 7.96% of the total revenue
+- All items had an average discount percentage around 10%
+- Serum was by far the highest revenue product category
 - All products had at least one sale
-- Highest discount
-
 
 ### Order Analysis
-- mosts common payment method
-- most common sales avenue
-- number of orders cancelled
-
+- UPI was the most common payment method at 41.1%
+- Website was by far most common sales avenue at 55.8%
 
 
 ## Recommendations
