@@ -101,12 +101,38 @@ FROM orders;
 -- These exactly match that calculated above.
 
 
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 2. Average order value
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- To calculate the average order value,
+-- we first look at the amount generated prior to
+-- applying the discount and shipping fees:
+
+SELECT ROUND(AVG(i.quantity * p.mrp),2) FROM order_items as i
+INNER JOIN products AS p
+	ON i.product_id = p.product_id;
+-- This gives an average order value of $636.64
+
+
+-- Accounting for the discount, this is reduced to
+SELECT ROUND(AVG(quantity * mrp * ( 1 - discount_pct/100)),2)
+FROM (
+SELECT p.mrp,
+i.quantity,
+CAST(i.discount_pct AS NUMERIC)
+FROM order_items as i
+INNER JOIN products AS p
+	ON i.product_id = p.product_id
+)
+-- This gives an average order value after discount of $575.59
+
 
 
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
--- 2. Revenue by month
+-- 3. Revenue by month
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -- Now we move to a finer-grained analysis of the revenue,
@@ -148,7 +174,7 @@ ORDER BY order_year, order_month ASC;
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
--- 3. Month-over-month growth
+-- 4. Month-over-month growth
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -- To provide further details on the above, we calculate the
@@ -199,8 +225,12 @@ FROM monthly_orders;
 -- More than half the year!
 
 
+
+
+
+
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
--- 4. Num. orders by month
+-- 5. Num. orders by month
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
@@ -235,7 +265,7 @@ SELECT order_year,
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
--- 5. Revenue Breakdown
+-- 6. Revenue Breakdown
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 -- For further analyses, we can look at:
@@ -286,7 +316,7 @@ FROM monthly_orders;
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- 6. Most common payment method
+-- 7. Most common payment method
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 SELECT payment_method, 
@@ -311,7 +341,7 @@ ORDER BY payment_pct DESC;
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- 7. Most common sales channel
+-- 8. Most common sales channel
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 SELECT sales_channel, 
 	COUNT(*) AS sales_count
@@ -332,6 +362,11 @@ ORDER BY channel_pct DESC;
 -- 55.8% of the overall sales. And Marketplace only 8.64%.
 
 
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 9. Cancelled Orders
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 SELECT
 	EXTRACT(YEAR FROM order_date) AS order_year,

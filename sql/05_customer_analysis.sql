@@ -168,4 +168,59 @@ FROM customer_spending
 ORDER BY total_spent ASC;
 
 
-SELECT COUNT(*) FROM customers;
+
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 5.  Top 10 Customers
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- First, I will create a summary table of the top 10 customers,
+-- including revenue percentage.
+WITH customer_summary AS (
+SELECT c.customer_id,
+	c.customer_name,
+	COUNT(o.order_id) AS num_orders,
+	RANK() OVER(ORDER BY SUM(o.final_amount) DESC) AS spending_rank,
+	SUM(o.final_amount) AS total_spent,
+	ROUND(AVG(SUM(o.final_amount)) OVER(),2) AS avg_total_spent,
+	ROUND(AVG(o.final_amount),2) AS average_order_value
+FROM customers AS c
+INNER JOIN orders AS o
+	ON c.customer_id = o.customer_id
+GROUP BY c.customer_id
+),
+top_10_customers AS (
+SELECT *,
+ROUND(100 * (total_spent / (SUM(total_spent) OVER ())),2) AS customer_pct
+FROM customer_summary
+LIMIT 10
+)
+SELECT * FROM top_10_customers;
+
+
+-- Next, I will use the above to calculate the total percentage that
+-- the top 10 customers contributed to the total revenue.
+
+WITH customer_summary AS (
+SELECT c.customer_id,
+	c.customer_name,
+	COUNT(o.order_id) AS num_orders,
+	RANK() OVER(ORDER BY SUM(o.final_amount) DESC) AS spending_rank,
+	SUM(o.final_amount) AS total_spent,
+	ROUND(AVG(SUM(o.final_amount)) OVER(),2) AS avg_total_spent,
+	ROUND(AVG(o.final_amount),2) AS average_order_value
+FROM customers AS c
+INNER JOIN orders AS o
+	ON c.customer_id = o.customer_id
+GROUP BY c.customer_id
+),
+top_10_customers AS (
+SELECT *,
+ROUND(100 * (total_spent / (SUM(total_spent) OVER ())),2) AS customer_pct
+FROM customer_summary
+LIMIT 10
+)
+SELECT SUM(customer_pct) FROM top_10_customers;
+
+-- Overall, the top 10 customers generated 3% of the revenue.

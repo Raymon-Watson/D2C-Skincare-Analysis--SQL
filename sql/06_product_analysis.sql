@@ -159,4 +159,31 @@ WHERE i.order_id IS NULL;
 
 
 
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 5. Products by category
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+
+WITH product_data AS (
+SELECT p.category,
+	SUM(i.quantity * p.mrp * (1 - CAST(i.discount_pct AS NUMERIC)/100) ) AS total_revenue -- Total revenue including discount
+FROM products AS p
+INNER JOIN order_items AS i
+	ON p.product_id = i.product_id
+INNER JOIN orders AS o
+	ON i.order_id = o.order_id
+WHERE o.order_status NOT IN ('Cancelled', 'Returned') -- Make sure to not include orders that were cancelled or returned
+GROUP BY p.product_id
+)
+-- Next, we use the above calculated total revenue to find both the rank according 
+-- to total revenue, as well as the percent that this revenue contributes to the total for all items.
+SELECT category, 
+	ROUND(SUM(total_revenue),2) AS category_revenue,
+	ROUND(
+    	100 * SUM(total_revenue)
+    	/ SUM(SUM(total_revenue)) OVER (),
+    	2) AS category_revenue_pct	FROM product_data
+GROUP BY category
+ORDER BY category_revenue DESC;
+
 
