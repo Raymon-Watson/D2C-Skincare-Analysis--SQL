@@ -65,7 +65,7 @@ order_items\
 &emsp;| product_id\
 &emsp;|\
 products\
---------\
+--------
 
 
 ## Analysis Approach
