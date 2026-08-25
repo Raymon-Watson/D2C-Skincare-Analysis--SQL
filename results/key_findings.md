@@ -49,6 +49,11 @@ Finally, of the repeat customers, only 19 have ordered more than 5 times, and wi
 # Product Analysis
 
 
+The first section in the relevant sql file contains a summary table of the products. From this, we find that the top 7 products contribute at least 5% to the total revenue each. Further, the bottom 7 items contribute 2% to the revenue each. This is not an enormous gap.
+
+The average discount is quite high across all items. One way to increase revenue would be to limit the number of items with a discount, as each item has a non-zero average discount. However, this also likely rules out the method of increasing item discounts to increase customer retention.
+
+The highest revenue product brings in $81,027,65 to the total revenue, whereas the lowest revenue product only brings in $10,872.75. This gap is not enormous, and the range of values is quite reasonable; further, there are no items that have not sold, meaning it would not be beneficial to remove items from the store to decrease purchasing cost.
 
 # Advanced Analysis
 
