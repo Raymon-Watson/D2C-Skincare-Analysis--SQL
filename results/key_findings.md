@@ -34,6 +34,16 @@ Ordering via website is the most common sales channel, accounting for 55.84% of 
 
 # Customer Analysis
 
+## Customer Summary
+Through the customer summary table, contained in the first section of the customer analysis sql file, we find that only 199 customers of the total 500 have spent more than the average amount. This accounts for less than half the total number of customers, perhaps suggesting that the overall revenue is brought up by a handful of high-spending customers.
+
+
+## Customer Purchasing Habits
+
+We find that 46 customers have never placed an order, which is quite a large proportion of the total 500 listed customers (~10%). Further, 102 customers have never made a repeat purchase, accounting for ~20% of the customer base, which is significant.
+
+Finally, of the repeat customers, only 19 have ordered more than 5 times, and with 10 of those ordering between 7 and 8 times. This perhaps suggests that revenue could be increased by improving customer retention.
+
 
 
 # Product Analysis
