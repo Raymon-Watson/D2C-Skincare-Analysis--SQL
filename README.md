@@ -50,22 +50,18 @@ For a full breakdown of each table, along with the datatypes and brief explanati
 The relations between each table in this database are as follows:
 
 customers\
---------\
 &emsp;|\
 &emsp;| customer_id\
 &emsp;&darr;\
 orders\
---------\
 &emsp;|\
 &emsp;| order_id\
 &emsp;&darr;\
 order_items\
---------\
 &emsp;&uarr;\
 &emsp;| product_id\
 &emsp;|\
-products\
---------
+products
 
 
 ## Analysis Approach
