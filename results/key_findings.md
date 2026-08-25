@@ -1,7 +1,7 @@
 # Key Findings
+Here, I collate all of the key findings from the various sql files. The relevant business recommendations can be found in the README.
 
-
-## Sales Analysis
+# Sales Analysis
 
 ### Total revenue
 Final revenue (including discount) = $1,175,350.00
@@ -26,6 +26,18 @@ The above is also in agreement with the number of orders by month, suggesting th
 ## Channel breakdowns
 ### Payment method
 By far the most common payment method is UPI, accounting for 41.12% of the payment methods used. The second-most is via Credit Card, only accounting for 20.56%.
+
+
+
+# Customer Analysis
+
+
+
+# Product Analysis
+
+
+
+# Advanced Analysis
 
 ### Sales channel
 Ordering via website is the most common sales channel, accounting for 55.84% of the sales channels. In comparison, Mobile App accounts for 35.52%, and Marketplace for 8.64%.
