@@ -16,7 +16,6 @@ Broad questions the analysis aims to answer:
 - Which products and categories generate the most revenue/profit?
 - Which customers contribute the most revenue/profit?
 - What population of customers make repeat purchases?
-- Which region possesses the largest customer base?
 
 ## Dataset
 
