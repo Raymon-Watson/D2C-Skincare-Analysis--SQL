@@ -21,4 +21,6 @@ Months with negative growth:
 - 2025 Feb, Apr, May, Jun, Aug, Sep, Nov
 which accounts for more than half the year.
 
+The above is also in agreement with the number of orders by month, suggesting that the total revenue underperforms during the first half of both years due to a lower number of overall orders.
+
 
