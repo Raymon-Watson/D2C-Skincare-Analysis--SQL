@@ -55,7 +55,6 @@ The average discount is quite high across all items. One way to increase revenue
 
 The highest revenue product brings in $81,027,65 to the total revenue, whereas the lowest revenue product only brings in $10,872.75. This gap is not enormous, and the range of values is quite reasonable; further, there are no items that have not sold, meaning it would not be beneficial to remove items from the store to decrease purchasing cost.
 
-# Advanced Analysis
 
 
 
