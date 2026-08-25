@@ -19,6 +19,20 @@ SELECT COUNT(DISTINCT city) FROM customers;
 SELECT COUNT(DISTINCT customer_state) FROM customers;
 -- Num. states = 13
 
+-- Num. customer in each city
+SELECT city, COUNT(customer_id) FROM customers
+GROUP BY city
+ORDER BY COUNT(customer_id) DESC;
+-- Most customers: Indore, 34
+-- Least customers: Chennai, 16
+
+-- Num customer in each state
+SELECT customer_state, COUNT(customer_id) FROM customers
+GROUP BY customer_state
+ORDER BY COUNT(customer_id) DESC;
+-- Most customers: Maharashtra, 78
+-- Least customer: Telangana, 18
+
 SELECT MIN(signup_date),
 MAX(signup_date)
 FROM customers;
@@ -32,21 +46,21 @@ FROM customers;
 -- 2. Orders
 -- ~~~~~~~~~
 
-SELECT * FROM orders
-LIMIT 5;
-
+-- Number of orders
 SELECT COUNT(*),
 COUNT(DISTINCT order_id)
 FROM orders;
 -- Num. orders = 1250
 -- Each row contains one distinct order
 
+-- Order date range
 SELECT MIN(order_date),
 MAX(order_date)
 FROM orders;
 -- First order = 2024-01-01
 -- Last order = 2025-12-31
 
+-- Order statuses
 SELECT DISTINCT order_status FROM orders;
 -- Order types: 
 -- Delivered
@@ -54,6 +68,7 @@ SELECT DISTINCT order_status FROM orders;
 -- Cancelled
 -- In Transit
 
+-- Payment methods
 SELECT DISTINCT payment_method FROM orders;
 -- Payment types: 
 -- Net banking
@@ -62,12 +77,14 @@ SELECT DISTINCT payment_method FROM orders;
 -- COD
 -- Credit Card
 
+-- Sales channels
 SELECT DISTINCT sales_channel FROM orders;
 -- Sales channels:
 -- Marketplace
 -- Mobile App
 -- Website
 
+-- Delivery date range
 SELECT MIN(delivered_date),
 MAX(delivered_date)
 FROM orders;

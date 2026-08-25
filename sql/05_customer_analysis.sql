@@ -1,1 +1,123 @@
+-- ##########################
+--   05 Customer analysis
+-- ##########################
 
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 1.  Customer Summary
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- To aid in the following analysis, we start with 
+-- an overall customer summary, containing:
+-- customer_id
+-- customer_name
+-- number_of_orders
+-- total_spent
+-- spending_rank
+-- average_order_value
+-- first_order
+-- last_order
+
+SELECT c.customer_id,
+	c.customer_name,
+	COUNT(o.order_id) AS num_orders,
+	RANK() OVER(ORDER BY SUM(o.final_amount) DESC) AS spending_rank,
+	SUM(o.final_amount) AS total_spent,
+	ROUND(AVG(SUM(o.final_amount)) OVER(),2) AS avg_total_spent,
+	ROUND(AVG(o.final_amount),2) AS average_order_value,
+	MIN(o.order_date) AS first_order,
+	MAX(o.order_date) AS last_order
+FROM customers AS c
+INNER JOIN orders AS o
+	ON c.customer_id = o.customer_id
+GROUP BY c.customer_id;
+
+-- We find that only 199 customers have spent more than the 
+-- average total amount. Recalling that there are 500 total
+-- customers, this accounts for less than half.
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 2. Customers Without Purchases
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- First, we find a list of all customers without orders:
+SELECT * FROM customers AS c
+LEFT JOIN orders AS o
+	ON c.customer_id = o.customer_id
+WHERE o.order_id IS NULL;
+
+-- Let's count the number of customers:
+SELECT COUNT(*) FROM customers AS c
+LEFT JOIN orders AS o
+	ON c.customer_id = o.customer_id
+WHERE o.order_id IS NULL;
+-- Overall, 46 customers have never placed an order.
+-- This accounts for nearly 10% of the 500 customers.
+
+-- Let's also check the number of cancelled orders,
+-- since this effectively counts as a non-order:
+SELECT COUNT(*) FROM orders
+WHERE order_status = 'Cancelled';
+-- 86 total cancelled orders, out of a total 1250.
+-- Not an enormous amount.
+
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 3.  Non-Repeat Customers
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- It would be interesting to see how many customers
+-- do not order a second time. Perhaps an issue is
+-- customer retention.
+
+-- First, we count the number of customers who have
+-- only a single order. This is simple enough that we
+-- don't need to use a CTE, and can instead subquery.
+
+SELECT COUNT(*) FROM (
+	SELECT c.customer_id,
+		COUNT(o.order_id) AS num_orders
+	FROM customers AS c
+	INNER JOIN orders AS o
+		ON c.customer_id = o.customer_id
+	GROUP BY c.customer_id
+)
+WHERE num_orders = 1;
+-- Overall, 102 customers have never repeat ordered.
+-- This seems to be a significant amount of the customer
+-- base (~20%), suggesting the need to improve customer retention.
+
+-- We also provide a list of the customers without repeat orders:
+SELECT c.customer_id,
+	c.customer_name,
+	COUNT(o.order_id) AS num_orders
+FROM customers AS c
+INNER JOIN orders AS o
+	ON c.customer_id = o.customer_id
+GROUP BY c.customer_id
+HAVING COUNT(o.order_id) = 1;
+
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 4.  Repeat Customers
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-- Finally, we look at the customers who did repeat, ranking
+-- them by their number of orders, and comparing this against
+-- the average number of orders.
+SELECT c.customer_id,
+	c.customer_name,
+	COUNT(o.order_id) AS num_orders,
+	ROUND(AVG(COUNT(o.final_amount)) OVER(),2) AS avg_num_orders,
+	RANK() OVER(ORDER BY COUNT(o.final_amount) DESC) AS rank_num_order
+FROM customers AS c
+INNER JOIN orders AS o
+	ON c.customer_id = o.customer_id
+GROUP BY c.customer_id;
+
+-- There are only 19 customers who ordered more than 5 times.
+-- This is significantly less than the number of customers who
+-- either ordered only once or no times.

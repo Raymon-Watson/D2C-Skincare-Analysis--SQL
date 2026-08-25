@@ -11,22 +11,29 @@
 SELECT COUNT(*),
 COUNT(DISTINCT customer_id)
 FROM customers;
+-- 500 distinct customer id's.
+-- matches the number of rows (consistent).
 
 -- orders: PK = order_id
 SELECT COUNT(*),
 COUNT(DISTINCT order_id)
 FROM orders;
+-- 1250 distinct order id's.
+-- Matches the number of rows (consistent).
 
 -- order_items: PK = order_item_id
 SELECT COUNT(*),
 COUNT(DISTINCT order_item_id)
 FROM order_items;
+-- 2024 order item id's.
+-- Consistent.
 
 -- products: PK = product_id
 SELECT COUNT(*),
 COUNT(DISTINCT product_id)
 FROM products;
-
+-- 28 products.
+-- Consistent.
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~
 -- 2. Are any values missing
@@ -145,7 +152,7 @@ WHERE oi.order_item_id IS NULL;
 
 
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
--- 5. Do all order_items match a product
+-- 6. Do all order_items match a product
 -- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 SELECT * FROM order_items AS oi
@@ -153,3 +160,11 @@ LEFT JOIN products AS p
 	ON oi.product_id = p.product_id
 WHERE p.product_name IS NULL;
 -- All order items match a product.
+
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 7. Overall data quality assessment
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- All data is consistent, entirely numerically valid,
+-- and the table relational integrity is sound.
+-- No issues found.
