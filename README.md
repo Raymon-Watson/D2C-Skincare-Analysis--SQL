@@ -51,54 +51,21 @@ The relations between each table in this database are as follows:
 
 customers\
 --------\
-customer_id [PK]\
-customer_name\
-city\
-customer_state\
-signup_date\
 &emsp;|\
 &emsp;| customer_id\
 &emsp;&darr;\
 orders\
 --------\
-order_id [PK]\
-customer_id [FK]\
-order_date\
-order_status\
-payment_method\
-sales_channel\
-gross_amount\
-discount_amount\
-shipping_fee\
-final_amount\
-delivered_date\
 &emsp;|\
 &emsp;| order_id\
 &emsp;&darr;\
 order_items\
 --------\
-order_item_id [PK]\
-order_id [FK]\
-product_it [FK]\
-quantity\
-unit_price\
-discount_pct\
-item_total\
 &emsp;&uarr;\
 &emsp;| product_id\
 &emsp;|\
 products\
 --------\
-product_id [PK]\
-product_name\
-category\
-skin_type\
-key_ingredient\
-product_size\
-mrp\
-cost_price\
-stock_qty\
-launch_date\
 
 
 ## Analysis Approach
