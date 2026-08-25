@@ -27,7 +27,8 @@ The above is also in agreement with the number of orders by month, suggesting th
 ### Payment method
 By far the most common payment method is UPI, accounting for 41.12% of the payment methods used. The second-most is via Credit Card, only accounting for 20.56%.
 
-
+### Sales channel
+Ordering via website is the most common sales channel, accounting for 55.84% of the sales channels. In comparison, Mobile App accounts for 35.52%, and Marketplace for 8.64%.
 
 # Customer Analysis
 
@@ -39,7 +40,6 @@ By far the most common payment method is UPI, accounting for 41.12% of the payme
 
 # Advanced Analysis
 
-### Sales channel
-Ordering via website is the most common sales channel, accounting for 55.84% of the sales channels. In comparison, Mobile App accounts for 35.52%, and Marketplace for 8.64%.
+
 
 
