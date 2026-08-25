@@ -104,16 +104,60 @@ launch_date\
 
 ## Analysis Approach
 
-**Expand this section with additional details**
+The analysis was carried out in PostgreSQL using a relational dataset containing customers, products, orders, and order items.
 
-The analysis presented here was completed in five stages:
-1. Database setup
-2. Data quality assessment
-3. Exploratory analysis
-4. Business-focused sales, customer, and product analysis
-5. Advanced analysis of trends and customer behaviour
+The analysis followed four main stages:
+
+1. **Data quality checks**
+  - Checked for missing values, duplicates, and invalid values.
+  - Reviewed table relational structure for consistency.
+
+2. **Exploratory analysis**
+  - Examined the size and time range of the dataset.
+  - Explored customer locations, product categories, payment methods, and order statuses.
+
+3. **Sales analysis**
+  - Calculated total and monthly revenue.
+  - Analysed average order value and order volume.
+  - Examined month-over-month revenue growth as well as payment method and sales channel usage.
+  
+4. **Customer and product analysis**
+  - Analysed customer spending and purchasing frequency.
+  - Ranked customers by revenue contribution.
+  - Analysed product sales, revenue, and discounts.
+
+Cancelled orders were excluded from revenue calculations where appropriate.
+Item-level revenue was calculated using quantity, product price, and discount, with shipping fees accounted for once per order.
 
 ## Key Findings
+
+
+### Sales Performance
+- Total non-cancelled revenue
+- Average order value
+- Revenue peaked in
+- Revenue dipped in
+- Largest month-over-month increase
+
+
+### Customer Behaviour
+- Top 10 customers generated % of the total revenue
+- % of customers placed more than one order
+- Highest-spending customer generated % in revenue
+
+### Product Performance
+- generated most revenue
+- highest revenue product category
+- All products had at least one sale
+- Highest discount
+
+
+### Order Analysis
+- mosts common payment method
+- most common sales avenue
+- number of orders cancelled
+
+
 
 ## Recommendations
 
