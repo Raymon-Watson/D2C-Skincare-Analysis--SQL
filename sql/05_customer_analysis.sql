@@ -121,3 +121,51 @@ GROUP BY c.customer_id;
 -- There are only 19 customers who ordered more than 5 times.
 -- This is significantly less than the number of customers who
 -- either ordered only once or no times.
+
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+-- 5.  Spending Tiers
+-- ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+WITH customer_spending AS (
+    SELECT
+        customer_id,
+        SUM(final_amount) AS total_spent
+    FROM orders
+    WHERE order_status != 'Cancelled'
+    GROUP BY customer_id
+)
+SELECT
+    customer_id,
+    total_spent,
+    CASE
+        WHEN total_spent >= 5000 THEN 'High Value'
+        WHEN total_spent >= 2000 THEN 'Medium Value'
+        ELSE 'Low Value'
+    END AS customer_segment
+FROM customer_spending
+ORDER BY total_spent DESC;
+-- According to the above (somewhat arbitrary) classification,
+-- only 38 of the overall 500 customers are considered High Value.
+-- In contrast, as shown below, 196 of the customers could be considered Low Value.
+
+WITH customer_spending AS (
+    SELECT
+        customer_id,
+        SUM(final_amount) AS total_spent
+    FROM orders
+    WHERE order_status != 'Cancelled'
+    GROUP BY customer_id
+)
+SELECT
+    customer_id,
+    total_spent,
+    CASE
+        WHEN total_spent >= 5000 THEN 'High Value'
+        WHEN total_spent >= 2000 THEN 'Medium Value'
+        ELSE 'Low Value'
+    END AS customer_segment
+FROM customer_spending
+ORDER BY total_spent ASC;
+
+
+SELECT COUNT(*) FROM customers;

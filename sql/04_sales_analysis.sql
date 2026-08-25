@@ -333,4 +333,53 @@ ORDER BY channel_pct DESC;
 
 
 
+SELECT
+	EXTRACT(YEAR FROM order_date) AS order_year,
+    EXTRACT(MONTH FROM order_date) AS order_month,
+    COUNT(*) AS total_orders,
+    COUNT(
+        CASE
+            WHEN order_status = 'Cancelled' THEN 1
+        END
+    ) AS cancelled_orders,
+    COUNT(
+        CASE
+            WHEN order_status != 'Cancelled' THEN 1
+        END
+    ) AS non_cancelled_orders
+FROM orders
+GROUP BY order_year, order_month
+ORDER BY order_year, order_month;
 
+-- We see a surprising spike in the number of cancelled orders
+-- during November 2024 and August 2025, where the number of
+-- cancelled orders exceeds 10.
+-- It is perhaps interesting that the months where the largest
+-- number of cancelled orders occur is also during the months
+-- of highest revenue. This is likely due to an increase of
+-- the total number of orders, meaning that the proportion of
+-- cancelled orders is roughly constant.
+
+-- To check this last assertion, we can look at the proportion
+-- of cancelled orders:
+WITH orders_cancelled AS (
+SELECT
+	EXTRACT(YEAR FROM order_date) AS order_year,
+    EXTRACT(MONTH FROM order_date) AS order_month,
+    COUNT(*) AS total_orders,
+    COUNT(
+        CASE
+            WHEN order_status = 'Cancelled' THEN 1
+        END
+    ) AS cancelled_orders
+FROM orders
+GROUP BY order_year, order_month
+ORDER BY order_year, order_month)
+SELECT *,
+	ROUND(100*CAST(cancelled_orders AS NUMERIC)/
+	CAST(total_orders AS NUMERIC),2)
+FROM orders_cancelled;
+
+-- The above assertion is not actually true. There seems to
+-- be a spike in the proportion of cancelled orders
+-- during these months.
