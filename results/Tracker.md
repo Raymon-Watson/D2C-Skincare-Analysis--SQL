@@ -69,6 +69,8 @@ Basic information:
 
 # Sales Analysis
 
+
+
 By taking the difference between MRP and cost price, we can calculate the profit per item:
 - Min mrp-cost diff. = 157 / Max mrp-cost diff. = 441 (AVG 279.32)
 
