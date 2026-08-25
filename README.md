@@ -135,7 +135,6 @@ This project uses:
 - subqueries
 - Common Table Expressions (CTEs)
 - conditional aggregation
-- ROW_NUMBER
 - RANK
 - LAG and LEAD
 - windowed SUM and AVG
