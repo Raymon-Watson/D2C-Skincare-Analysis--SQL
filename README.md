@@ -151,21 +151,59 @@ Item-level revenue was calculated using quantity, product price, and discount, w
 ### Product Performance
 - Alpha Arbutin 2% Serum generated most revenue, accounting for 7.96% of the total revenue
 - All items had an average discount percentage around 10%
-- Serum was by far the highest revenue product category
+- Serum was by far the highest revenue product category, accounting for 45.6% of the revenue
+- All other item categories had revenue percentages around or below 10%
 - All products had at least one sale
 
 ### Order Analysis
 - UPI was the most common payment method at 41.1%
 - Website was by far most common sales avenue at 55.8%
 
-
 ## Recommendations
 
-## How to Run the Project
+- **Focus on customer retention.**
+  Around 20% of customers only ever placed a single order, suggesting that improving general
+  customer retention may be valuable.
+  
+- **Investigate poorly performing products.**
+  Products with very low or zero sales could be reviewed to determine whether they
+  should be promoted, repositioned, or removed from the product range.
 
-1. Run 01_database_setup.sql
-2. Import data from .csv files into relevant tables
-3. Run 02_data_quality.sql
+- **Prioritise high-performing product categories.**
+  Categories consistently generating strong revenue, notably Serums, may warrant greater inventory,
+  marketing, or promotional attention.
+
+- **Investigate periods of declining revenue.**
+  More than half the months in the year, in particular the first half of the year,
+  had negative revenue growth. This should be further examined for changes in order
+  volume, average order value, product mix, or cancellations.
+
+
+## Reproducing the Analysis
+
+The SQL files in this repository contain the queries used throughout the analysis.
+They are organised by topic and are intended to document the analytical process as
+well as allow the results to be reproduced if desired.
+
+To reproduce the analysis:
+
+1. Create a PostgreSQL database.
+2. Create the required tables using `01_database_setup.sql`.
+3. Import the provided CSV files into the corresponding tables.
+4. Run the analysis files in numerical order:
+
+   - `02_data_quality.sql`
+   - `03_exploration.sql`
+   - `04_sales_analysis.sql`
+   - `05_customer_analysis.sql`
+   - `06_product_analysis.sql`
+
+The SQL files do not need to be run as a single pipeline. Each file contains
+independent analytical queries that can be executed individually in PostgreSQL,
+for example using pgAdmin.
+
+Key results and conclusions from the analysis are summarised in the
+**Key Findings** section of this README.
 
 ## SQL Skills Demonstrated
 
