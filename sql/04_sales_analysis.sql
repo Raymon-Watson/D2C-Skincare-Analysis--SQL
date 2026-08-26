@@ -51,6 +51,9 @@ FROM discount_numeric;
 -- Total price after discount = $1,175,350.00
 
 
+SELECT * FROM products
+LIMIT 5;
+
 
 -- (2) Calculate Final Revenue:
 -- The final revenue includes the shipping fee.
@@ -72,7 +75,7 @@ INNER JOIN products AS p
 INNER JOIN orders AS o
 	ON i.order_id = o.order_id
 WHERE order_status != 'Cancelled'
-), 
+),
 -- Next, to apply the shipping fee ONCE PER ORDER, we can
 -- use a second CTE to group orders.
 grouped_orders AS (
@@ -87,6 +90,12 @@ JOIN orders
 	ON grouped_orders.order_id = orders.order_id;
 	
 -- Final revenue = $1,122,034.65
+
+
+-- Count the number of orders per customer
+-- Show the customer id and customer name
+-- Number of orders each customer placed
+
 
 
 

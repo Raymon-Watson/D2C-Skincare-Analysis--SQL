@@ -12,6 +12,10 @@ DROP TABLE IF EXISTS products;
 
 
 
+
+
+
+
 -- ######## 2. Create core tables ########
 
 CREATE TABLE customers (
